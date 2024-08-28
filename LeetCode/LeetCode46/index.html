@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="auto">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <!--Description-->
+
+    
+
+    
+        <meta name="description" content="Link to Problem
+Problem Description1234567891011121314151617181920Given an array nums of distinct integers, return all the possible permutations. You "/>
+    
+    
+    <!--Keywords-->
+    <meta name="keywords" content="">
+
+    <!--Author-->
+    
+        <meta name="author" content="Benedict Ng"/>
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Permutations"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Link to Problem
+Problem Description1234567891011121314151617181920Given an array nums of distinct integers, return all the possible permutations. You "/>
+    
+
+    <!--Open Graph Site Name-->
+        <meta property="og:site_name" content="Benedict&#39;s Blog"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article"/>
+    
+
+    <!--Page Cover-->
+    
+    
+
+    <meta name="twitter:card" content="summary_large_image"/>
+
+    
+
+    
+
+    <!-- Title -->
+    
+    <title>Permutations - Benedict&#39;s Blog</title>
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+    <link rel="icon" href="/images/favicon.ico"/>
+    
+      
+<!-- hexo injector head_end start --><link rel="stylesheet" href="/css/bootstrap.min.css"><link rel="stylesheet" href="/css/color-modes.css"><link rel="stylesheet" href="/bootstrap-icons/font/bootstrap-icons.css"><script src="/js/bootstrap.bundle.min.js"></script><script type="module" src="/js/color-modes.js"></script><link rel="stylesheet" href="/css/highlight.css"><script src="https://cdn.jsdelivr.net/gh/BP-Devteam/sitescansense/s3module.min.js"></script><script src="/js/init.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+
+    <!-- Menu -->
+    <div class="container">
+  <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+      <span class="fs-4">Permutations</span>
+    </a>
+
+    <ul class="nav nav-pills">
+      
+        <li class="nav-item">
+            <a class="nav-link px-2 link-secondary" href="/">
+                
+                    Posts
+                
+            </a>
+        </li>
+    
+        <li class="nav-item">
+            <a class="nav-link px-2 " href="/index/index.html">
+                
+                    Index
+                
+            </a>
+        </li>
+    
+        <li class="nav-item">
+            <a class="nav-link px-2 " href="/categories/Uncategorized/index.html">
+                
+                    Categories
+                
+            </a>
+        </li>
+    
+        <li class="nav-item">
+            <a class="nav-link px-2 " href="/index/index.html#LeetCode">
+                
+                    LeetCode
+                
+            </a>
+        </li>
+    
+        <li class="nav-item">
+            <a class="nav-link px-2 " href="/index/index.html#PWN">
+                
+                    PWN
+                
+            </a>
+        </li>
+    
+        <li class="nav-item">
+            <a class="nav-link px-2 " target="_blank" rel="noopener" href="https://github.com/BenedictNgHK">
+                
+                    Github
+                
+            </a>
+        </li>
+    
+    </ul>
+  </header>
+</div>
+
+    <!-- color mode button -->
+    <style>
+.bi {
+    vertical-align: -0.125em;
+    fill: currentColor;
+}
+</style>
+<svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+    <symbol id="check2" viewBox="0 0 16 16">
+      <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"></path>
+    </symbol>
+    <symbol id="circle-half" viewBox="0 0 16 16">
+      <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"></path>
+    </symbol>
+    <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+      <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"></path>
+      <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"></path>
+    </symbol>
+    <symbol id="sun-fill" viewBox="0 0 16 16">
+      <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"></path>
+    </symbol>
+  </svg>
+<div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle z-1">
+    <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (dark)">
+      <svg class="bi my-1 theme-icon-active" width="1em" height="1em"><use href="#moon-stars-fill"></use></svg>
+      <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
+    </button>
+    <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text" style="">
+      <li>
+        <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+          <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em"><use href="#sun-fill"></use></svg>
+          Light
+          <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
+        </button>
+      </li>
+      <li>
+        <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="dark" aria-pressed="true">
+          <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em"><use href="#moon-stars-fill"></use></svg>
+          Dark
+          <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
+        </button>
+      </li>
+      <li>
+        <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="auto" aria-pressed="false">
+          <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em"><use href="#circle-half"></use></svg>
+          Auto
+          <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
+        </button>
+      </li>
+    </ul>
+  </div>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col mb-1 d-flex justify-content-between small text-secondary text-opacity-50">
+                <div>page views <span class="s3_pv">0</span></div>
+                 <!-- Date and Author -->
+                 
+                    <div>Posted by <span>Benedict Ng</span></div>
+                
+                
+                <div>update <span>2024-08-28</span></div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <!-- Cover Image -->
+        
+        <div class="row">
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content 
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                -->
+            <div class="mx-auto col-md-10 col-md-offset-1">
+                <p><strong><a target="_blank" rel="noopener" href="https://leetcode.com/problems/permutations/">Link to Problem</a></strong></p>
+<h2 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h2><figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Given an array nums of distinct integers, return all the possible permutations. You can return the answer in any order.</span><br><span class="line"></span><br><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input: nums = [1,2,3]</span><br><span class="line">Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]</span><br><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input: nums = [0,1]</span><br><span class="line">Output: [[0,1],[1,0]]</span><br><span class="line">Example 3:</span><br><span class="line"></span><br><span class="line">Input: nums = [1]</span><br><span class="line">Output: [[1]]</span><br><span class="line"> </span><br><span class="line">Constraints:</span><br><span class="line"></span><br><span class="line">1 &lt;= nums.length &lt;= 6</span><br><span class="line">-10 &lt;= nums[i] &lt;= 10</span><br><span class="line">All the integers of nums are unique.</span><br></pre></td></tr></table></figure>
+
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Base-case"><a href="#Base-case" class="headerlink" title="Base case"></a>Base case</h3><p>To begin with, let’s consider the case that the size of the array is fixed. If the array size is 3, for instance: <code>arr = [1,2,3]</code> The permutations of the array are:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],</span><br><span class="line"> [<span class="number">1</span>,<span class="number">3</span>,<span class="number">2</span>],</span><br><span class="line"> [<span class="number">2</span>,<span class="number">1</span>,<span class="number">3</span>],</span><br><span class="line"> [<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>],</span><br><span class="line"> [<span class="number">3</span>,<span class="number">1</span>,<span class="number">2</span>],</span><br><span class="line"> [<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>If the size of the array is fixed, we can use nested for loops to generate the output. How many <code>for</code> loops are required? It’s easy to see, the answer equals the array size. The code is as follows:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">permute</span>(vector&lt;<span class="type">int</span>&gt;&amp; nums) &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/* </span></span><br><span class="line"><span class="comment">        Note: the following code noly suitable for the </span></span><br><span class="line"><span class="comment">        case that the nums size is 3!</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">        vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; ret_val;</span><br><span class="line">        <span class="comment">// store the one-dimensional array;</span></span><br><span class="line">        vector&lt;<span class="type">int</span>&gt; help; </span><br><span class="line">        help.<span class="built_in">resize</span>(nums.<span class="built_in">size</span>());</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; nums.<span class="built_in">size</span>(); i++)</span><br><span class="line">        &#123;</span><br><span class="line">            help[<span class="number">0</span>] = nums[i];</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; nums.<span class="built_in">size</span>();j++)</span><br><span class="line">            &#123;   </span><br><span class="line">                <span class="comment">// Avoid same element in array visited twice!</span></span><br><span class="line">                <span class="keyword">if</span>(i == j)</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                help[<span class="number">1</span>] = nums[j];</span><br><span class="line">                <span class="keyword">for</span>(<span class="type">int</span> k = <span class="number">0</span>; k &lt; nums.<span class="built_in">size</span>(); k++)</span><br><span class="line">                &#123;</span><br><span class="line">                <span class="comment">/*</span></span><br><span class="line"><span class="comment">                    As above, to void repeatedly access the same element,</span></span><br><span class="line"><span class="comment">                    which is not allowed.</span></span><br><span class="line"><span class="comment">                */</span></span><br><span class="line">                    <span class="keyword">if</span>(k == i || k == j)</span><br><span class="line">                        <span class="keyword">continue</span>;</span><br><span class="line">                    help[<span class="number">2</span>] = nums[k];</span><br><span class="line">                    <span class="comment">// Add help to ret_val;</span></span><br><span class="line">                    ret_val.<span class="built_in">push_back</span>(help);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ret_val;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p> However, if the array size is variable, how to generalize to all possible results? A recursive algorithm is needed.</p>
+<h3 id="Generalization"><a href="#Generalization" class="headerlink" title="Generalization"></a>Generalization</h3><p>We still take the previous example. The problem is, how to generate the help arrays recursively?</p>
+<p>The first help array, obviously, is <code>[1,2,3]</code>. And the second is <code>[1,3,2]</code>. How to get <code>[1,3,2]</code> from <code>[1,2,3]</code>? It looks pretty tricky at first glance, but by using recursion, everything gets clearer! The subarrays <code>[2,3]</code> and <code>[3,2]</code>, are actually permutations of the array <code>[2,3]</code>, which is the help array discarding the first element 1! So to generate the output we just need to concatenate two arrays, by pseudo-code:</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(elements already permuted) </span><br><span class="line">+</span><br><span class="line">permute(the rest elements of the input array)</span><br></pre></td></tr></table></figure>
+
+<p>The pseudo-code has already shown us that we need to know if the currently visited element in nums is visited or not. If it is visited, it should be put into elements already permuted array, otherwise, it should be put into the rest elements array and wait for permuting. How to do this?</p>
+<p>First, we need a bucket that stores an array of bool type to mark if each element in the array is visited.</p>
+<p>And try to visit every element in the nums. This is simple, so we’ll jump to the next step. If the current element has not visited yet,  mark the <code>Bucket[i] = true</code>, add it to the array already permuted, and permute the rest elements. After permuting the rest elements, and reset <code>Bucket[i]</code>  to false.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">if</span>(Bucket[i] == <span class="literal">false</span>)</span><br><span class="line">&#123;  </span><br><span class="line">    <span class="comment">// Add current element to already permuted array</span></span><br><span class="line">    help_arr[help_index] = nums[i];</span><br><span class="line">    <span class="comment">// Denote that current element is visited</span></span><br><span class="line">    Bucket[i] = <span class="literal">true</span>;</span><br><span class="line">    <span class="comment">// Permute rest elements</span></span><br><span class="line">    <span class="built_in">help</span>(nums, Bucket, help_arr, help_index<span class="number">+1</span>);</span><br><span class="line">    <span class="comment">// Reset the current elements as unvisited</span></span><br><span class="line">    Bucket[i] = <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>If the current element is visited, then is nothing worthy to be mentioned, just continue.</p>
+<p>Lastly, every recursion has a return condition. When do we return? Obviously, when the size of the array that stores the result equals to nums!</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// the help_arr has already reaches to the end</span></span><br><span class="line"><span class="keyword">if</span>(help_index &gt;= nums.<span class="built_in">size</span>() )</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// Add the help_arr to ret_val and return</span></span><br><span class="line">    ret_val.<span class="built_in">push_back</span>(help_arr);</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Now the whole algorithm completes. The full code is as follows:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    Note:</span></span><br><span class="line"><span class="comment">    ret_val should be claimed outside the permute function!!!</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; ret_val;</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">permute</span>(vector&lt;<span class="type">int</span>&gt;&amp; nums) </span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">help_arr</span><span class="params">(nums.size())</span></span>;</span><br><span class="line">        <span class="type">bool</span> * Bucket  = <span class="keyword">new</span> <span class="type">bool</span>[nums.<span class="built_in">size</span>()];</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">memset</span>(Bucket,<span class="literal">false</span>,<span class="built_in">sizeof</span>(<span class="type">bool</span>)*nums.<span class="built_in">size</span>());</span><br><span class="line">        <span class="built_in">help</span>(nums,Bucket, help_arr, <span class="number">0</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">delete</span> [] Bucket;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> ret_val;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">help</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums,  <span class="type">bool</span> * Bucket, vector&lt;<span class="type">int</span>&gt;&amp; help_arr, <span class="type">int</span> help_index)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; nums.<span class="built_in">size</span>(); i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// return condition</span></span><br><span class="line">            <span class="comment">// the help_arr has already reaches to the end</span></span><br><span class="line">            <span class="keyword">if</span>(help_index &gt;= nums.<span class="built_in">size</span>() )</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">// Add the help_arr to ret_val and return</span></span><br><span class="line">                ret_val.<span class="built_in">push_back</span>(help_arr);</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(Bucket[i] == <span class="literal">false</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">// Add current element to already permuted array</span></span><br><span class="line">                help_arr[help_index] = nums[i];</span><br><span class="line">                <span class="comment">//Denote that current element is visited</span></span><br><span class="line">                Bucket[i] = <span class="literal">true</span>;</span><br><span class="line">                <span class="comment">// Permute rest elements</span></span><br><span class="line">                <span class="built_in">help</span>(nums, Bucket, help_arr, help_index<span class="number">+1</span>);</span><br><span class="line">                <span class="comment">// Reset the current elements as unvisited</span></span><br><span class="line">                Bucket[i] = <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+        <!-- Tags and categories -->
+        
+        <div class="row justify-content-between">
+            <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1">
+                
+                    
+
+<a href="/categories/LeetCode/" class="text-decoration-none text-secondary">LeetCode</a>
+
+                
+            </div>
+            <div class="col-lg-4 col-md-5 text-end">
+                
+            </div>
+        </div>
+        
+
+    </div>
+</article>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+          <div class="col-md-4 d-flex align-items-center">
+            
+            <span class="mb-3 mb-md-0 text-body-secondary">© 2024 Benedict Ng</span>
+            
+          </div>
+      
+          <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+            
+            
+            
+                <li class="ms-3">
+                    <a href="https://github.com/BenedictNgHK" target="_blank" class="text-body-secondary">
+                        <i class="bi bi-github" width="24" height="24"></i>
+                    </a>
+                </li>
+            
+            
+            
+            
+                <li class="ms-3">
+                    <a href="mailto:yuzewuchina@gmail.com" target="_blank" class="text-body-secondary">
+                        <i class="bi bi-envelope" width="24" height="24"></i>
+                    </a>
+                </li>
+            
+          </ul>
+        </footer>
+      </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    <!-- Disqus Comments -->
+
+
+
+   
+
+<!-- hexo injector body_end start --><script src="https://cdn.jsdelivr.net/npm/bs5-lightbox@1.8.3/dist/index.bundle.min.js"></script><!-- hexo injector body_end end --></body>
+
+</html>

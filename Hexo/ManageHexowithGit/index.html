@@ -13,6 +13,9 @@
     
 
     
+        <meta name="description" content="It’s annoying to manage Hexo blogs with git and github because of lacking of resources in internet. Here I show a method to manage my Hexo blog.
+Befor"/>
+    
     
     <!--Keywords-->
     <meta name="keywords" content="">
@@ -24,10 +27,13 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="Benedict&#39;s Blog"/>
+        <meta property="og:title" content="Manage Hexo with Git"/>
     
 
     <!--Open Graph Description-->
+    
+        <meta property="og:description" content="It’s annoying to manage Hexo blogs with git and github because of lacking of resources in internet. Here I show a method to manage my Hexo blog.
+Befor"/>
     
 
     <!--Open Graph Site Name-->
@@ -35,7 +41,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website"/>
+        <meta property="og:type" content="article"/>
     
 
     <!--Page Cover-->
@@ -50,7 +56,7 @@
 
     <!-- Title -->
     
-    <title>LeetCode - Benedict&#39;s Blog</title>
+    <title>Manage Hexo with Git - Benedict&#39;s Blog</title>
 
     <!-- Google Analytics -->
     
@@ -70,7 +76,7 @@
     <div class="container">
   <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-      <span class="fs-4">Benedict&#39;s Blog</span>
+      <span class="fs-4">Manage Hexo with Git</span>
     </a>
 
     <ul class="nav nav-pills">
@@ -188,80 +194,106 @@
   </div>
 
     <!-- Main Content -->
-    <div class="container my-5">
-    <div class="p-5 text-center rounded-3" style="background-image: url('/null'); background-size: cover;">
-        <h1 class="text-body-emphasis">Category: LeetCode</h1>
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col mb-1 d-flex justify-content-between small text-secondary text-opacity-50">
+                <div>page views <span class="s3_pv">0</span></div>
+                 <!-- Date and Author -->
+                 
+                    <div>Posted by <span>Benedict Ng</span></div>
+                
+                
+                <div>update <span>2024-08-29</span></div>
+            </div>
+        </div>
     </div>
-</div>
-
-<!-- Main Content -->
-<div class="container page-categories">
-    <div class="row">
-        <div class="text-center">
+    <div class="container">
+        <!-- Cover Image -->
+        
+        <div class="row">
+            <!-- Gallery -->
             
-                
-    <a href="/categories/Hexo/" class="btn btn-light m-2">
-        Hexo
-    </a>
 
+            <!-- Post Main Content 
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                -->
+            <div class="mx-auto col-md-10 col-md-offset-1">
+                <p>It’s annoying to manage Hexo blogs with git and github because of lacking of resources in internet. Here I show a method to manage my Hexo blog.</p>
+<p>Before getting started, let’s assume you have done the following works:</p>
+<ol>
+<li>You have setup your github page and the local blog can be deployed to it.</li>
+<li>You have initialized a you Hexo project folder as git repo and linked it with the remote github page repo.</li>
+</ol>
+<p>Note: You can push the source code of the Hexo project to your github page repo and the github page still can be deployed properly.</p>
+<p>The result will be:</p>
+<ol>
+<li><code>username.github.io</code> repo. It is to store the project source files and used as github pages, and it contains a submodule used as your theme.</li>
+<li><code>hexo-theme</code> repo. This repo is to store your hexo theme. It is forked from other authors.</li>
+</ol>
+<h2 id="Fork-a-desired-theme-and-clone-it"><a href="#Fork-a-desired-theme-and-clone-it" class="headerlink" title="Fork a desired theme and clone it"></a>Fork a desired theme and clone it</h2><ol>
+<li>Go to your desired theme github repo and fork it as your own. You can rename your forked repo..</li>
+<li>Go to your forked repo and clone it to the <code>themes</code> folder. The command should be:</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># Hexo</span></span></span><br><span class="line">git clone forked_repo_url.git ./themes/your_theme_name</span><br></pre></td></tr></table></figure>
+
+<h2 id="Add-your-forked-repo-as-submodule"><a href="#Add-your-forked-repo-as-submodule" class="headerlink" title="Add your forked repo as submodule"></a>Add your forked repo as submodule</h2><ol>
+<li>Add your theme as submodule</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git submodule add forked_repo_url.git /themes/your_theme_name</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>Update and init submodule</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git submodule init</span><br><span class="line">git submodule update</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>Stage and commit the changes</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add .gitmodules themes/your_theme_name</span><br><span class="line">git commit -m &quot;Added submodule from existing repository&quot;</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>Check status</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
+
+<p>And now you can commit your changes and push them to your remote repo.</p>
+
+            </div>
+
+            <!-- Comments -->
             
-                
-    <a href="/categories/LeetCode/" class="btn btn-info m-2">
-        LeetCode
-        <span class="badge badge-light">2</span>
-    </a>
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
 
-            
-                
-    <a href="/categories/Uncategorized/" class="btn btn-light m-2">
-        Uncategorized
-    </a>
 
+                </div>
             
         </div>
+        <!-- Tags and categories -->
         
-            <div class="">
-                <hr class="category-preview-hr">
+        <div class="row justify-content-between">
+            <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1">
                 
-                    <div class="post-preview post-preview-archive-category">
-    <a href="/LeetCode/LeetCode46/">
-        <h1 class="post-title">
-            Permutations
-        </h1>
-    </a>
-    <p class="post-meta">
-        <!-- Date and Author -->
-        
-            Posted by Benedict Ng on
-        
-        2024-08-28
-    </p>
-</div>
+                    
+
+<a href="/categories/Hexo/" class="text-decoration-none text-secondary">Hexo</a>
+
                 
-                    <div class="post-preview post-preview-archive-category">
-    <a href="/LeetCode/LeetCode1/">
-        <h1 class="post-title">
-            Two Sum
-        </h1>
-    </a>
-    <p class="post-meta">
-        <!-- Date and Author -->
-        
-            Posted by Benedict Ng on
-        
-        2024-08-28
-    </p>
-</div>
-                
-                <div class="archive-before-pagination"></div>
-                <ul class="d-flex justify-content-between pager">
-    
-    
-</ul>
             </div>
+            <div class="col-lg-4 col-md-5 text-end">
+                
+            </div>
+        </div>
         
+
     </div>
-</div>
+</article>
 
 
 

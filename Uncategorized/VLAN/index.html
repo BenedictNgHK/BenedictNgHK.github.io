@@ -13,6 +13,8 @@
     
 
     
+        <meta name="description" content="Native VLAN (PVID)Native VLAN and PVID are essentially the same, they are both port default VLAN ID. The default VLAN ID for every port is 1 initially"/>
+    
     
     <!--Keywords-->
     <meta name="keywords" content="">
@@ -24,10 +26,12 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="Benedict&#39;s Blog"/>
+        <meta property="og:title" content="VLAN"/>
     
 
     <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Native VLAN (PVID)Native VLAN and PVID are essentially the same, they are both port default VLAN ID. The default VLAN ID for every port is 1 initially"/>
     
 
     <!--Open Graph Site Name-->
@@ -35,7 +39,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website"/>
+        <meta property="og:type" content="article"/>
     
 
     <!--Page Cover-->
@@ -50,7 +54,7 @@
 
     <!-- Title -->
     
-    <title>Archives: 2024/8 - Benedict&#39;s Blog</title>
+    <title>VLAN - Benedict&#39;s Blog</title>
 
     <!-- Google Analytics -->
     
@@ -81,7 +85,7 @@
     <div class="container">
   <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-      <span class="fs-4">Benedict&#39;s Blog</span>
+      <span class="fs-4">VLAN</span>
     </a>
 
     <ul class="nav nav-pills">
@@ -199,109 +203,105 @@
   </div>
 
     <!-- Main Content -->
-    
-
-<!-- Page Header -->
-<!-- Set your background image for this header in the theme's configuration: index_cover -->
-<div class="container my-5">
-    <div class="p-5 text-center rounded-3" style="background-image: url('/null'); background-size: cover;">
-        <h1 class="text-body-emphasis">2024/8</h1>
-    </div>
-</div>
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
 
 
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <div class="text-center">
-                <div class="btn-group archives-filter-group" role="group" aria-label="archives filter">
-    
-
-    
-        
-            <button type="button" class="btn btn-info" disabled>
-                2024
-            </button>
-        
-    
-</div>
-
-    <a class="btn btn-light archives-filter-all" href="/archives/" role="button">
-        All    
-        <span class="badge badge-secondary">5</span>
-    </a>
- 
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col mb-1 d-flex justify-content-between small text-secondary text-opacity-50">
+                <div>page views <span class="s3_pv">0</span></div>
+                 <!-- Date and Author -->
+                 
+                    <div>Posted by <span>Benedict Ng</span></div>
+                
+                
+                <div>update <span>2024-08-28</span></div>
             </div>
-            
-                <div class="post-preview">
-    <a href="/LeetCode/LeetCode46/">
-        <h1 class="post-title archive">
-            Permutations
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-            Posted by Benedict Ng on
-        
-        2024-08-30
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/Uncategorized/VLAN/">
-        <h1 class="post-title archive">
-            VLAN
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-            Posted by Benedict Ng on
-        
-        2024-08-28
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/Uncategorized/VirtualMachine/">
-        <h1 class="post-title archive">
-            Virtual Machine
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-            Posted by Benedict Ng on
-        
-        2024-08-28
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/LeetCode/LeetCode1/">
-        <h1 class="post-title archive">
-            Two Sum
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-            Posted by Benedict Ng on
-        
-        2024-08-28
-    </p>
-</div>
-            
-            <div class="archive-before-pagination"></div>
-            <ul class="d-flex justify-content-between pager">
-    
-    
-</ul>
         </div>
     </div>
-</div>
+    <div class="container">
+        <!-- Cover Image -->
+        
+        <div class="row">
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content 
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                -->
+            <div class="mx-auto col-md-10 col-md-offset-1">
+                <h2 id="Native-VLAN-PVID"><a href="#Native-VLAN-PVID" class="headerlink" title="Native VLAN (PVID)"></a>Native VLAN (PVID)</h2><p>Native VLAN and PVID are essentially the same, they are both port default VLAN ID. The default VLAN ID for every port is 1 initially, and it can be managed accordingly. It was invented to accomodate the old devices that do not support VLAN.</p>
+<h2 id="Acess-Port"><a href="#Acess-Port" class="headerlink" title="Acess Port"></a>Acess Port</h2><h3 id="Receive"><a href="#Receive" class="headerlink" title="Receive"></a>Receive</h3><ul>
+<li>Untagged Packet</li>
+</ul>
+<p>Tag it with native VLAN ID</p>
+<ul>
+<li>Tagged Packet</li>
+</ul>
+<p>If the packet mathes the native VLAN ID, the port accepts it; otherwise the port discards it.</p>
+<h3 id="Forward"><a href="#Forward" class="headerlink" title="Forward"></a>Forward</h3><p>Deprive the native VLAN ID and forward the packet as untagged</p>
+<h2 id="Trunk-Port"><a href="#Trunk-Port" class="headerlink" title="Trunk Port"></a>Trunk Port</h2><h3 id="Receive-1"><a href="#Receive-1" class="headerlink" title="Receive"></a>Receive</h3><ul>
+<li>Untagged Packet</li>
+</ul>
+<p>For untagged packet, when trunk port receives it, it will be tagged with native VLAN ID. If the native VLAN ID matches any entry of allowed VLAN list, the packet will be accepted; otherwise it will be discarded.</p>
+<ul>
+<li>Tagged Packet</li>
+</ul>
+<p>The port compares the tagged ID with every entry of allowed VLAN list, if they match, the packet will be accepted; otherwise it will be discarded.</p>
+<h3 id="Forward-1"><a href="#Forward-1" class="headerlink" title="Forward"></a>Forward</h3><ul>
+<li>Packet VLAN ID matches the native VLAN ID and the VLAN ID is in the allowed VLAN list:</li>
+</ul>
+<p>Deprive the VLAN ID and forward it as untagged.</p>
+<ul>
+<li>Packet VLAN ID mismatches the native VLAN ID and the VLAN ID is in the allowed VLAN list:</li>
+</ul>
+<p>Do nothing, forward it with the original tag.</p>
+<h2 id="Hybrid-Port"><a href="#Hybrid-Port" class="headerlink" title="Hybrid Port"></a>Hybrid Port</h2><h3 id="Receive-2"><a href="#Receive-2" class="headerlink" title="Receive"></a>Receive</h3><ul>
+<li>Untagged Packet</li>
+</ul>
+<p>For untagged packet, when trunk port receives it, it will be tagged with native VLAN ID. If the native VLAN ID matches any entry of allowed VLAN list, the packet will be accepted; otherwise it will be discarded.</p>
+<ul>
+<li>Tagged Packet</li>
+</ul>
+<p>The port compares the tagged ID with every entry of allowed VLAN list, if they match, the packet will be accepted; otherwise it will be discarded.</p>
+<h3 id="Forward-2"><a href="#Forward-2" class="headerlink" title="Forward"></a>Forward</h3><p>If the VLAN ID is in the allowed VLAN list, forward it. It is allowed to set if the packet is forwarded with tag or without tag by command.</p>
+<h2 id="Mac-Based-VLAN"><a href="#Mac-Based-VLAN" class="headerlink" title="Mac-Based VLAN"></a>Mac-Based VLAN</h2><p>Mac-based VLAN is a technique that associates end devices mac address with VLAN ID. It is used for the following scenario: people move around in the office and they don’t always sit in fixed position, that means each different end device, such as PC, uses changing ports of switch. In this case, the mac address of each end device has to be bound with VLAN ID in order to identify which VLAN the PCs belong to.</p>
+<p>To configure mac-based VLAN, the ports connected to the end devices has to be configured as hybrid port and set every VLAN need to pass to the PCs as untagged. This is because the end devices cannot process the tagged frame.</p>
+
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+        <!-- Tags and categories -->
+        
+        <div class="row justify-content-between">
+            <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1">
+                
+                    
+
+<a href="/categories/Uncategorized/" class="text-decoration-none text-secondary">Uncategorized</a>
+
+                
+            </div>
+            <div class="col-lg-4 col-md-5 text-end">
+                
+            </div>
+        </div>
+        
+
+    </div>
+</article>
+
 
 
     <!-- Footer -->

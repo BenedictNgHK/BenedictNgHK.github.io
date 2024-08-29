@@ -13,8 +13,8 @@
     
 
     
-        <meta name="description" content="It’s annoying to manage Hexo blogs with git and github because of lacking of resources in internet. Here I show a method to manage my Hexo blog.
-Befor"/>
+        <meta name="description" content="It’s annoying to manage Hexo blogs with git and Github because of lacking of resources in internet. Here I show a method to manage my Hexo blog.
+The r"/>
     
     
     <!--Keywords-->
@@ -32,8 +32,8 @@ Befor"/>
 
     <!--Open Graph Description-->
     
-        <meta property="og:description" content="It’s annoying to manage Hexo blogs with git and github because of lacking of resources in internet. Here I show a method to manage my Hexo blog.
-Befor"/>
+        <meta property="og:description" content="It’s annoying to manage Hexo blogs with git and Github because of lacking of resources in internet. Here I show a method to manage my Hexo blog.
+The r"/>
     
 
     <!--Open Graph Site Name-->
@@ -224,21 +224,17 @@ Befor"/>
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 -->
             <div class="mx-auto col-md-10 col-md-offset-1">
-                <p>It’s annoying to manage Hexo blogs with git and github because of lacking of resources in internet. Here I show a method to manage my Hexo blog.</p>
-<p>Before getting started, let’s assume you have done the following works:</p>
+                <p>It’s annoying to manage Hexo blogs with git and Github because of lacking of resources in internet. Here I show a method to manage my Hexo blog.</p>
+<p>The repos in Github will be:</p>
 <ol>
-<li>You have setup your github page and the local blog can be deployed to it.</li>
-<li>You have initialized a you Hexo project folder as git repo and linked it with the remote github page repo.</li>
-</ol>
-<p>Note: You can push the source code of the Hexo project to your github page repo and the github page still can be deployed properly.</p>
-<p>The result will be:</p>
-<ol>
-<li><code>username.github.io</code> repo. It is to store the project source files and used as github pages, and it contains a submodule used as your theme.</li>
-<li><code>HexoSourceCode</code> repo. </li>
+<li><code>username.github.io</code> repo. This is the Github page repo to demonstrate your blog.</li>
 <li><code>hexo-theme</code> repo. This repo is to store your hexo theme. It is forked from other authors.</li>
+<li><code>HexoSourceCode</code> repo. This is the repo to store your source code of your Hexo project and it contains a submodule used as theme.</li>
 </ol>
+<h2 id="Setup-deployment-configuration"><a href="#Setup-deployment-configuration" class="headerlink" title="Setup deployment configuration"></a>Setup deployment configuration</h2><p>This is already specified in the official website. So I just attach the link below. Please note: the url must match with your Github page repo.</p>
+<p><a target="_blank" rel="noopener" href="https://hexo.io/docs/github-pages#One-command-deployment">How to deploy</a></p>
 <h2 id="Fork-a-desired-theme-and-clone-it"><a href="#Fork-a-desired-theme-and-clone-it" class="headerlink" title="Fork a desired theme and clone it"></a>Fork a desired theme and clone it</h2><ol>
-<li>Go to your desired theme github repo and fork it as your own. You can rename your forked repo..</li>
+<li>Go to your desired theme Github repo and fork it as your own. You can rename your forked repo..</li>
 <li>Go to your forked repo and clone it to the <code>themes</code> folder. The command should be:</li>
 </ol>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># Hexo</span></span></span><br><span class="line">git clone forked_repo_url.git ./themes/your_theme_name</span><br></pre></td></tr></table></figure>
@@ -263,8 +259,27 @@ Befor"/>
 </ol>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
 
-<p>And now you can commit your changes and push them to your remote repo.</p>
+<h2 id="Create-source-code-repo-in-Github-and-associate-it-with-local-repo"><a href="#Create-source-code-repo-in-Github-and-associate-it-with-local-repo" class="headerlink" title="Create source code repo in Github and associate it with local repo"></a>Create source code repo in Github and associate it with local repo</h2><p>Just associate your local repo with your <code>HexoSourceCode</code> repo like normal.</p>
+<ol>
+<li>Create a remote repo used to store your source code in Github. Let’s assume its name is <code>HexoSourceCode</code>.</li>
+<li>Initialize your local git repo in your Hexo folder.</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
 
+<ol start="3">
+<li>Add all files to staged zone and commit them.</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add --all</span><br><span class="line">git commit -m &quot;Initial Commit&quot;</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>Associate you local repo with remote repo.</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin HexoSourceCode_url.git</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>Push to remote repo</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin main</span><br></pre></td></tr></table></figure>
             </div>
 
             <!-- Comments -->

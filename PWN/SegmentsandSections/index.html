@@ -13,6 +13,10 @@
     
 
     
+        <meta name="description" content="SegmentsSegments usually describe the layout of elf files in memory. In a C program the memory layout is as follows:
+
+So each the segments are differe"/>
+    
     
     <!--Keywords-->
     <meta name="keywords" content="">
@@ -24,10 +28,14 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="Benedict&#39;s Blog"/>
+        <meta property="og:title" content="Segments and Sections"/>
     
 
     <!--Open Graph Description-->
+    
+        <meta property="og:description" content="SegmentsSegments usually describe the layout of elf files in memory. In a C program the memory layout is as follows:
+
+So each the segments are differe"/>
     
 
     <!--Open Graph Site Name-->
@@ -35,7 +43,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website"/>
+        <meta property="og:type" content="article"/>
     
 
     <!--Page Cover-->
@@ -50,7 +58,7 @@
 
     <!-- Title -->
     
-    <title>Archives: 2024/7 - Benedict&#39;s Blog</title>
+    <title>Segments and Sections - Benedict&#39;s Blog</title>
 
     <!-- Google Analytics -->
     
@@ -81,7 +89,7 @@
     <div class="container">
   <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-      <span class="fs-4">Benedict&#39;s Blog</span>
+      <span class="fs-4">Segments and Sections</span>
     </a>
 
     <ul class="nav nav-pills">
@@ -199,64 +207,96 @@
   </div>
 
     <!-- Main Content -->
-    
-
-<!-- Page Header -->
-<!-- Set your background image for this header in the theme's configuration: index_cover -->
-<div class="container my-5">
-    <div class="p-5 text-center rounded-3" style="background-image: url('/null'); background-size: cover;">
-        <h1 class="text-body-emphasis">2024/7</h1>
-    </div>
-</div>
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
 
 
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <div class="text-center">
-                <div class="btn-group archives-filter-group" role="group" aria-label="archives filter">
-    
-
-    
-        
-            <button type="button" class="btn btn-info" disabled>
-                2024
-            </button>
-        
-    
-</div>
-
-    <a class="btn btn-light archives-filter-all" href="/archives/" role="button">
-        All    
-        <span class="badge badge-secondary">5</span>
-    </a>
- 
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col mb-1 d-flex justify-content-between small text-secondary text-opacity-50">
+                <div>page views <span class="s3_pv">0</span></div>
+                 <!-- Date and Author -->
+                 
+                    <div>Posted by <span>Benedict Ng</span></div>
+                
+                
+                <div>update <span>2024-08-30</span></div>
             </div>
-            
-                <div class="post-preview">
-    <a href="/Hexo/ManageHexowithGit/">
-        <h1 class="post-title archive">
-            Manage Hexo with Git
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-            Posted by Benedict Ng on
-        
-        2024-07-28
-    </p>
-</div>
-            
-            <div class="archive-before-pagination"></div>
-            <ul class="d-flex justify-content-between pager">
-    
-    
-</ul>
         </div>
     </div>
-</div>
+    <div class="container">
+        <!-- Cover Image -->
+        
+        <div class="row">
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content 
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                -->
+            <div class="mx-auto col-md-10 col-md-offset-1">
+                <h2 id="Segments"><a href="#Segments" class="headerlink" title="Segments"></a>Segments</h2><p>Segments usually describe the layout of elf files in memory. In a C program the memory layout is as follows:</p>
+<p><img src="/PWN/SegmentsandSections/memoryLayoutC.jpg" alt="Memory Layout"></p>
+<p>So each the segments are different parts of the memory space e.g. Stack&#x2F;Heap. <strong>Note: uninitialized data (.bss) and initialized data (.data) should be regarded as a whole: data segment. They are sections by themselves.</strong> This memory layout is for virtual address. (visible to programmers). About the actually layout in physical memory, it is handled by OS using paging technique to mapping virtual address to physical address by page table. In a 32 bits OS, memory space for each process is 4GB (2^32). However 1 GB is preserved for OS kernel and shared between process, only about 3GB are exclusive for each process.</p>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=m1UzSfgjA4Y">Memory Segments</a></p>
+<ul>
+<li><p>Stack Segment:</p>
+<p>Stack is preserved for local variables and function calls. It grows from high address to low address. The stack segment are exclusive for each thread for multi-threads programs (this is a special case because other segments are shared between threads).</p>
+</li>
+</ul>
+<p><strong>Note: Between Stack and Heap there is a memory mapping segment used to store data of dynamic linked libraries.</strong></p>
+<ul>
+<li><p>Heap Segment:</p>
+<p>Heap is dynamically allocated memory (malloc(), calloc()) and its lifetime is managed by user (use free() to deallocate). It grows form low address to high address.</p>
+</li>
+<li><p>Data Segment:</p>
+<p>Data Segment has 2 sections: uninitialized data section (.bss) and initialized (.data) section.</p>
+</li>
+</ul>
+<ol>
+<li>.bss: It contains uninitialized static and global variables and they last during the whole lifetime of the program. These variables will be initialized as 0.</li>
+<li>.data: It contains initialized static and global variables and they last during the whole lifetime of the program. The variables in this section can be constant if you added <code>const</code> specifier in initialization.</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">const</span> <span class="type">char</span> * text = <span class="string">&quot;Hello World&quot;</span>;  <span class="comment">// In this case, the variable text is constant </span></span><br><span class="line"><span class="type">int</span> val;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n%s\n&quot;</span>, val, text); <span class="comment">// val will be 0 here</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Text Segment: It is also referred as code segment. It contains execution instructions for programs or const variables and its content cannot be modified during program execution. It is placed in the lower address so it will not be overwritten by heap or stack.</li>
+</ul>
+<h2 id="Sections"><a href="#Sections" class="headerlink" title="Sections"></a>Sections</h2><p>In contrast with segments, sections describe the layout of elf files in disk.</p>
+
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+        <!-- Tags and categories -->
+        
+        <div class="row justify-content-between">
+            <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1">
+                
+                    
+
+<a href="/categories/PWN/" class="text-decoration-none text-secondary">PWN</a>/ <a href="/categories/PWN/prerequisites/" class="text-decoration-none text-secondary">prerequisites</a>
+
+                
+            </div>
+            <div class="col-lg-4 col-md-5 text-end">
+                
+            </div>
+        </div>
+        
+
+    </div>
+</article>
+
 
 
     <!-- Footer -->

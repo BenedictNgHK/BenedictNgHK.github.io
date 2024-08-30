@@ -13,6 +13,10 @@
     
 
     
+        <meta name="description" content="amd64 is a superset of x86 instruction set. Here I just talk a little bit about the amd64 register conventions.
+Registers
+rax: 8 bytes register. regis"/>
+    
     
     <!--Keywords-->
     <meta name="keywords" content="">
@@ -24,10 +28,14 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="test"/>
+        <meta property="og:title" content="amd64"/>
     
 
     <!--Open Graph Description-->
+    
+        <meta property="og:description" content="amd64 is a superset of x86 instruction set. Here I just talk a little bit about the amd64 register conventions.
+Registers
+rax: 8 bytes register. regis"/>
     
 
     <!--Open Graph Site Name-->
@@ -50,7 +58,7 @@
 
     <!-- Title -->
     
-    <title>test - Benedict&#39;s Blog</title>
+    <title>amd64 - Benedict&#39;s Blog</title>
 
     <!-- Google Analytics -->
     
@@ -81,7 +89,7 @@
     <div class="container">
   <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-      <span class="fs-4">test</span>
+      <span class="fs-4">amd64</span>
     </a>
 
     <ul class="nav nav-pills">
@@ -211,6 +219,8 @@
                 <div>page views <span class="s3_pv">0</span></div>
                  <!-- Date and Author -->
                  
+                    <div>Posted by <span>Benedict Ng</span></div>
+                
                 
                 <div>update <span>2024-08-30</span></div>
             </div>
@@ -227,7 +237,28 @@
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 -->
             <div class="mx-auto col-md-10 col-md-offset-1">
-                
+                <p>amd64 is a superset of x86 instruction set. Here I just talk a little bit about the amd64 register conventions.</p>
+<h2 id="Registers"><a href="#Registers" class="headerlink" title="Registers"></a>Registers</h2><ul>
+<li>rax: 8 bytes register. registers starts with letter “r” occupy 8 bytes</li>
+<li>eax: 4 bytes register. The lowest 4 bytes of eax register</li>
+<li>ax: 2 bytes register. The lowest 2 bytes of eax register</li>
+<li>ah: 1 byte register. The highest byte of ax register</li>
+<li>al: 1 byte register. The lowest byte of ax register</li>
+</ul>
+<h2 id="Special-Registers"><a href="#Special-Registers" class="headerlink" title="Special Registers"></a>Special Registers</h2><ul>
+<li>RIP: Program counter (PC) register. In contains 2 parts: segment address and offset. The segment address stores the segment of executing program and the offset is the offset of next instruction.  </li>
+<li>RSP: The offset address of current top stack frame (when function is called).</li>
+<li>RBP: The bottom address of current bottom stack frame (when function is called).</li>
+<li>RAX: General purpose register. For storing the return value of function call.</li>
+</ul>
+<h2 id="Program-Execution"><a href="#Program-Execution" class="headerlink" title="Program Execution"></a>Program Execution</h2><h3 id="Static-Linkage"><a href="#Static-Linkage" class="headerlink" title="Static Linkage"></a>Static Linkage</h3><p><img src="/PWN/Assembly/static.png" alt="Static Linkage"></p>
+<h3 id="Dynamic-Linkage"><a href="#Dynamic-Linkage" class="headerlink" title="Dynamic Linkage"></a>Dynamic Linkage</h3><p><img src="/PWN/Assembly/dynamic.png" alt="Dynamic Linkage"></p>
+<p>ld.so: load the address of dynamic linked libraries</p>
+<h2 id="Common-amd64-Instructions"><a href="#Common-amd64-Instructions" class="headerlink" title="Common amd64 Instructions"></a>Common amd64 Instructions</h2><ul>
+<li>mov</li>
+<li>add&#x2F;sub</li>
+</ul>
+
             </div>
 
             <!-- Comments -->
@@ -240,6 +271,20 @@
             
         </div>
         <!-- Tags and categories -->
+        
+        <div class="row justify-content-between">
+            <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1">
+                
+                    
+
+<a href="/categories/PWN/" class="text-decoration-none text-secondary">PWN</a>/ <a href="/categories/PWN/prerequisites/" class="text-decoration-none text-secondary">prerequisites</a>
+
+                
+            </div>
+            <div class="col-lg-4 col-md-5 text-end">
+                
+            </div>
+        </div>
         
 
     </div>

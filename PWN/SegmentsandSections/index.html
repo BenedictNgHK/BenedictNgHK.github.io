@@ -13,9 +13,10 @@
     
 
     
-        <meta name="description" content="SegmentsSegments usually describe the layout of elf files in memory. In a C program the memory layout is as follows:
+        <meta name="description" content="Reference Link
+SegmentsSegments usually describe the layout of .elf files in memory. In a C program the memory layout is as follows:
 
-So each the segments are differe"/>
+So each the segm"/>
     
     
     <!--Keywords-->
@@ -33,9 +34,10 @@ So each the segments are differe"/>
 
     <!--Open Graph Description-->
     
-        <meta property="og:description" content="SegmentsSegments usually describe the layout of elf files in memory. In a C program the memory layout is as follows:
+        <meta property="og:description" content="Reference Link
+SegmentsSegments usually describe the layout of .elf files in memory. In a C program the memory layout is as follows:
 
-So each the segments are differe"/>
+So each the segm"/>
     
 
     <!--Open Graph Site Name-->
@@ -111,7 +113,7 @@ So each the segments are differe"/>
         </li>
     
         <li class="nav-item">
-            <a class="nav-link px-2 " href="/categories/Uncategorized/index.html">
+            <a class="nav-link px-2 " href="/categories/Uncategorized/">
                 
                     Categories
                 
@@ -119,7 +121,7 @@ So each the segments are differe"/>
         </li>
     
         <li class="nav-item">
-            <a class="nav-link px-2 " href="/index/index.html#Hexo">
+            <a class="nav-link px-2 " href="/categories/Hexo/">
                 
                     Hexo
                 
@@ -127,7 +129,7 @@ So each the segments are differe"/>
         </li>
     
         <li class="nav-item">
-            <a class="nav-link px-2 " href="/index/index.html#LeetCode">
+            <a class="nav-link px-2 " href="/categories/LeetCode/">
                 
                     LeetCode
                 
@@ -135,7 +137,7 @@ So each the segments are differe"/>
         </li>
     
         <li class="nav-item">
-            <a class="nav-link px-2 " href="/index/index.html#PWN">
+            <a class="nav-link px-2 " href="/categories/PWN/">
                 
                     PWN
                 
@@ -237,7 +239,8 @@ So each the segments are differe"/>
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 -->
             <div class="mx-auto col-md-10 col-md-offset-1">
-                <h2 id="Segments"><a href="#Segments" class="headerlink" title="Segments"></a>Segments</h2><p>Segments usually describe the layout of elf files in memory. In a C program the memory layout is as follows:</p>
+                <p><a href="./https://medium.com/@johnehk86/66-what-are-memory-and-sections-text-data-bss-rodata-etc-e134bd5b9ccd">Reference Link</a></p>
+<h2 id="Segments"><a href="#Segments" class="headerlink" title="Segments"></a>Segments</h2><p>Segments usually describe the layout of <code>.elf</code> files in memory. In a C program the memory layout is as follows:</p>
 <p><img src="/PWN/SegmentsandSections/memoryLayoutC.jpg" alt="Memory Layout"></p>
 <p>So each the segments are different parts of the memory space e.g. Stack&#x2F;Heap. <strong>Note: uninitialized data (.bss) and initialized data (.data) should be regarded as a whole: data segment. They are sections by themselves.</strong> This memory layout is for virtual address. (visible to programmers). About the actually layout in physical memory, it is handled by OS using paging technique to mapping virtual address to physical address by page table. In a 32 bits OS, memory space for each process is 4GB (2^32). However 1 GB is preserved for OS kernel and shared between process, only about 3GB are exclusive for each process.</p>
 <p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=m1UzSfgjA4Y">Memory Segments</a></p>
@@ -264,7 +267,11 @@ So each the segments are differe"/>
 <ul>
 <li>Text Segment: It is also referred as code segment. It contains execution instructions for programs or const variables and its content cannot be modified during program execution. It is placed in the lower address so it will not be overwritten by heap or stack.</li>
 </ul>
-<h2 id="Sections"><a href="#Sections" class="headerlink" title="Sections"></a>Sections</h2><p>In contrast with segments, sections describe the layout of elf files in disk.</p>
+<h2 id="Sections"><a href="#Sections" class="headerlink" title="Sections"></a>Sections</h2><p>In contrast with segments, sections describe the layout of <code>.elf</code> files in disk. The most frequently used sections in PWN is .data and .bss as mentioned before. Now let’s analyze a demo program.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> global; <span class="comment">//.bss section</span></span><br><span class="line"><span class="type">char</span> * str = <span class="string">&quot;Hello World!&quot;</span>; <span class="comment">// .data section</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">sum</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">	sum(<span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line">	<span class="type">void</span> * ptr = <span class="built_in">malloc</span>(<span class="number">0x100</span>);</span><br><span class="line">	read(<span class="number">0</span>, ptr, <span class="number">0x100</span>); <span class="comment">// input &quot;deadbeef&quot; here</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">sum</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> ret = x + y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Since <code>t</code> is the return value and <code>ptr</code> is local variable, they should be laid in stack segment. The heap segment stores the value <code>deadfeef</code> from the keyboard input. The <code>global</code> and <code>str</code> are both global variables. Since <code>global</code> is uninitialized variable, it should be initialized as 0 and stored in .bss section; and for <code>str</code>, since it is initialized, so it is stored in <code>.data</code> section. Both of them belongs to data segment. The text segment stores constant and instructions, so its content should be <code>main</code>, <code>sum</code> and <code>Hello World!</code>.</p>
+<p>About <code>x</code> and <code>y</code>: its related with the CPU architecture. In x86 architecture, they should be stored in stack segment.</p>
 
             </div>
 

@@ -139,6 +139,14 @@
         </li>
     
         <li class="nav-item">
+            <a class="nav-link px-2 " href="/categories/OS/">
+                
+                    OS
+                
+            </a>
+        </li>
+    
+        <li class="nav-item">
             <a class="nav-link px-2 " target="_blank" rel="noopener" href="https://github.com/BenedictNgHK">
                 
                     Github
@@ -239,7 +247,7 @@
 <p>For more information, please check: <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=FZR0rG3HKIk&list=TLPQMDMwNzIwMjRW4uVlVvvBww&index=1">Video</a> or <a target="_blank" rel="noopener" href="https://www.vmware.com/topics/glossary/content/hypervisor.html">Document</a></p>
 <h2 id="Containers-VS-VMs"><a href="#Containers-VS-VMs" class="headerlink" title="Containers VS VMs"></a>Containers VS VMs</h2><p>They key of container is that it only runs 1 application with its dependencies, but for VM, it is more like a virtualized OS that allow different applications to run simultaneously.</p>
 <h2 id="Snapshot"><a href="#Snapshot" class="headerlink" title="Snapshot"></a>Snapshot</h2><p>Once a Snapshot is taken, it records the current state of virtual machine and generates 2 files: one is a descriptor file points to the disk file and another is the disk file records the changed information. The snapshot allows user to revert to previous state or to clone different states of virtual machine. To clone the snapshot, there are 2 options: the first one creates a reference to the current snapshot, which is more space-efficient but once the disk file of current snapshot is lost, the cloned VM will lose its data; another method is like deep copy, which duplicates the entire disk file of existed snapshot.</p>
-<p><img src="/Uncategorized/VirtualMachine/Snapshot.png" alt="Snapshot"></p>
+<p><img src="/OS/VirtualMachine/Snapshot.png" alt="Snapshot"></p>
 <p>See <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=TbRLu8koF1w&list=PLtjUJ_XpOTPHQrN6UBxop5jWa5H8Sg_SU&index=24">Video</a></p>
 <h2 id="Network-of-VM"><a href="#Network-of-VM" class="headerlink" title="Network of VM"></a>Network of VM</h2><p>Bridged Mode:</p>
 <p>The host NIC will receive different IP addresses from DHCP server and allocate them to VMs, as if they are other physic machines. Other computers in the network can also access VMs through their IP address.</p>
@@ -274,26 +282,26 @@
 <p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=r41SLC5zzCg&t=47s">VMware tools</a></p>
 <p><strong>Notes</strong>: the ISO file is the image file of the operating system of your virtual machine. In this case, the OS of the virtual machine is Ubuntu, which is a famous distro of Linux OS. Besides, VMware workstation only supports hosts that run on Windows or Linux, it means that if you are using Mac, you should find some alternatives, such as virtualbox to install your virtual machine.</p>
 <h2 id="Basic-Configuration"><a href="#Basic-Configuration" class="headerlink" title="Basic Configuration"></a>Basic Configuration</h2><h3 id="Sharing-Clipboard"><a href="#Sharing-Clipboard" class="headerlink" title="Sharing Clipboard"></a>Sharing Clipboard</h3><p>By default, VMware doesn’t support shared clipboard between virtual machines and host. So to enable this, goto <code>VM-&gt;Settings</code>, and a setting window will be prompted. Then select <code>options-&gt;guest isolation</code> in the window, check <code>enable copy and paste</code>, click <code>OK</code> button at bottom. Now you should be able to copy and paste between virtual machine and host.</p>
-<p><img src="/Uncategorized/VirtualMachine/Clipboard.png" alt="Clipboard"></p>
+<p><img src="/OS/VirtualMachine/Clipboard.png" alt="Clipboard"></p>
 <h3 id="Sharing-Folders"><a href="#Sharing-Folders" class="headerlink" title="Sharing Folders"></a>Sharing Folders</h3><p>To transfer files between host and VMs, you can use shared folders. To enable it, go to <code>VM-&gt;Settings</code>, and when a window pops out select <code>options-&gt;SharedFolders</code>. You can share different folders of hosts with VMs.</p>
 <p>In the guest machine, the shared folders are in directory of <code>/mnt/hgfs</code></p>
-<p><img src="/Uncategorized/VirtualMachine/SharedFolders.png" alt="SharedFolders"></p>
+<p><img src="/OS/VirtualMachine/SharedFolders.png" alt="SharedFolders"></p>
 <h3 id="Using-VPN-from-Host-Machine"><a href="#Using-VPN-from-Host-Machine" class="headerlink" title="Using VPN from Host Machine"></a>Using VPN from Host Machine</h3><ol>
 <li>Find the IP address of host, by typing <code>ipconfig</code> in your CMD:</li>
 </ol>
-<p><img src="/Uncategorized/VirtualMachine/IP.png" alt="IP"></p>
+<p><img src="/OS/VirtualMachine/IP.png" alt="IP"></p>
 <ol start="2">
 <li>Make sure you are using NAT mode to connect with Internet:</li>
 </ol>
-<p><img src="/Uncategorized/VirtualMachine/NAT.png" alt="NAT"></p>
+<p><img src="/OS/VirtualMachine/NAT.png" alt="NAT"></p>
 <ol start="3">
 <li>Remember the port number of your proxy, and enable <code>Allow LAN</code> if there is an option on your proxy client:</li>
 </ol>
-<p><img src="/Uncategorized/VirtualMachine/Proxy.png" alt="Proxy"></p>
+<p><img src="/OS/VirtualMachine/Proxy.png" alt="Proxy"></p>
 <ol start="4">
 <li>Open <code>Settings-&gt;Network-&gt;Proxy</code> in Ubuntu OS, switch mode to manual, input the ip address of the host and port number of you proxy client. If you just want to browse contents of Internet, selecting <code>HTTP</code> and <code>HTTPS</code> proxies is enough.</li>
 </ol>
-<p><img src="/Uncategorized/VirtualMachine/HTTP&HTTPS.png" alt="HTTP&amp;HTTPS"></p>
+<p><img src="/OS/VirtualMachine/HTTP&HTTPS.png" alt="HTTP&amp;HTTPS"></p>
 <h2 id="More-Info"><a href="#More-Info" class="headerlink" title="More Info"></a>More Info</h2><p>To access more information about VMware Workstation Pro, please read the official document:</p>
 <p><a target="_blank" rel="noopener" href="https://docs.vmware.com/en/VMware-Workstation-Pro/17/com.vmware.ws.using.doc/GUID-0EE752F8-C159-487A-9159-FE1F646EE4CA.html">Document</a></p>
 
@@ -315,7 +323,7 @@
                 
                     
 
-<a href="/categories/Uncategorized/" class="text-decoration-none text-secondary">Uncategorized</a>
+<a href="/categories/OS/" class="text-decoration-none text-secondary">OS</a>
 
                 
             </div>

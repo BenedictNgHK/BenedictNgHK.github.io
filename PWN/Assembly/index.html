@@ -139,6 +139,14 @@
         </li>
     
         <li class="nav-item">
+            <a class="nav-link px-2 " href="/categories/OS/">
+                
+                    OS
+                
+            </a>
+        </li>
+    
+        <li class="nav-item">
             <a class="nav-link px-2 " target="_blank" rel="noopener" href="https://github.com/BenedictNgHK">
                 
                     Github
@@ -318,7 +326,7 @@
 <li>ss: stack segment</li>
 <li>ds, es, fs, gs: data segment</li>
 </ul>
-<h2 id="FLAGS-Registers"><a href="#FLAGS-Registers" class="headerlink" title="FLAGS Registers"></a>FLAGS Registers</h2><p>The FLAGS register is the status register that contains the current state of an x86 CPU. In 32 bits mode, FLAGS registers are called EFLAGS, in 64 bits mode, they are called RFLAGS. The upper 32 bits of RFLAGS are preserved bits (not exactly all 0s but with fixed bits) and lower 32 bits are identical with EFLAGS.</p>
+<h2 id="FLAGS-Register"><a href="#FLAGS-Register" class="headerlink" title="FLAGS Register"></a>FLAGS Register</h2><p>The FLAGS register is the status register that contains the current state of an x86 CPU. In 32 bits mode, FLAGS register is called EFLAGS, in 64 bits mode, it is called RFLAGS. The upper 32 bits of RFLAGS are preserved bits (not exactly all 0s but with fixed bits) and lower 32 bits are identical with EFLAGS.</p>
 <h2 id="Instruction-Pointer-Registers"><a href="#Instruction-Pointer-Registers" class="headerlink" title="Instruction Pointer Registers"></a>Instruction Pointer Registers</h2><p>Instruction pointer registers work like PC (Program Counter). They stores the address of next instruction to be executed by CPU. They are generally be referred as ip, eip, rip (16 bits&#x2F;32 bits&#x2F;64 bits).</p>
 <h2 id="Program-Execution"><a href="#Program-Execution" class="headerlink" title="Program Execution"></a>Program Execution</h2><h3 id="Static-Linkage"><a href="#Static-Linkage" class="headerlink" title="Static Linkage"></a>Static Linkage</h3><p><img src="/PWN/Assembly/static.png" alt="Static Linkage"></p>
 <h3 id="Dynamic-Linkage"><a href="#Dynamic-Linkage" class="headerlink" title="Dynamic Linkage"></a>Dynamic Linkage</h3><p><img src="/PWN/Assembly/dynamic.png" alt="Dynamic Linkage"></p>
@@ -340,6 +348,30 @@
 <p>After executing the above instruction, th value of <code>rax</code> should be 0x00000000FFFFFFFF. Note: If you want to assign a register with value directly from an address, this register must be <code>rax</code>. No other registers can do that.</p>
 <p>QWORD: 8 bytes, for registers starts with <code>r</code>, e.g. <code>rax</code>.<br>DWORD: 4 bytes, for registers starts with <code>e</code>, e.g. <code>eax</code>.<br>WORD: 2 bytes, for registers starts without prefix and ends with <code>x</code>, e.g. <code>ax</code>.<br>BYTE: 1 byte, for registers ends with <code>l</code> or <code>h</code>, e.g. <code>ah</code>.</p>
 <p>DS: data segment</p>
+<h3 id="INC-DEC"><a href="#INC-DEC" class="headerlink" title="INC&amp;DEC"></a>INC&amp;DEC</h3><p>INC: Increase the value in register by 1<br>DEC: Decrease the value in register by 1</p>
+<p>Syntax:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">INC RAX</span><br><span class="line">DEC RAX</span><br><span class="line">INC [RAX] // Increase the value stored in the address by 1</span><br><span class="line">DEC [RAX] // Decrease the value stored in the address by 1</span><br></pre></td></tr></table></figure>
+
+<p>INC and DEC will affect following bits in FLAGS register:</p>
+<ul>
+<li>PF (bit 2) Parity flag — Set if the least-significant byte of the result contains an even number of 1 bits;<br>cleared otherwise.</li>
+<li>AF (bit 4) Auxiliary Carry flag — Set if an arithmetic operation generates a carry or a borrow out of bit<br>3 of the result; cleared otherwise. This flag is used in binary-coded decimal (BCD) arithmetic.</li>
+<li>ZF (bit 6) Zero flag — Set if the result is zero; cleared otherwise.</li>
+<li>SF (bit 7) Sign flag — Set equal to the most-significant bit of the result, which is the sign bit of a signed<br>integer. (0 indicates a positive value and 1 indicates a negative value.)</li>
+<li>OF (bit 11) Overflow flag — Set if the integer result is too large a positive number or too small a negative<br>number (excluding the sign-bit) to fit in the destination operand; cleared otherwise. This flag<br>indicates an overflow condition for signed-integer (two’s complement) arithmetic.</li>
+</ul>
+<h2 id="ADD-SUB"><a href="#ADD-SUB" class="headerlink" title="ADD &amp; SUB"></a>ADD &amp; SUB</h2><p>Syntax:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ADD RAX, RAC    // add the value of RAX and RAC and store the sum in rax</span><br><span class="line">SUB RAX, 0x28   // subtract 0x28 from RAX and store the difference in rax</span><br></pre></td></tr></table></figure>
+
+<p>ADD and SUB will affect following bits in FLAGS register:</p>
+<ul>
+<li>CF (bit 0) Carry flag — Set if an arithmetic operation generates a carry or a borrow out of the mostsignificant bit of the result; cleared otherwise. This flag indicates an overflow condition for<br>unsigned-integer arithmetic. It is also used in multiple-precision arithmetic.</li>
+<li>PF (bit 2) Parity flag — Set if the least-significant byte of the result contains an even number of 1 bits;<br>cleared otherwise.</li>
+<li>AF (bit 4) Auxiliary Carry flag — Set if an arithmetic operation generates a carry or a borrow out of bit<br>3 of the result; cleared otherwise. This flag is used in binary-coded decimal (BCD) arithmetic.</li>
+<li>ZF (bit 6) Zero flag — Set if the result is zero; cleared otherwise.</li>
+<li>SF (bit 7) Sign flag — Set equal to the most-significant bit of the result, which is the sign bit of a signed<br>integer. (0 indicates a positive value and 1 indicates a negative value.)</li>
+<li>OF (bit 11) Overflow flag — Set if the integer result is too large a positive number or too small a negative<br>number (excluding the sign-bit) to fit in the destination operand; cleared otherwise. This flag<br>indicates an overflow condition for signed-integer (two’s complement) arithmetic.</li>
+</ul>
 
             </div>
 

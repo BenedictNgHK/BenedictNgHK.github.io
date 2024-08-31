@@ -13,9 +13,7 @@
     
 
     
-        <meta name="description" content="amd64 is a superset of x86 instruction set. Here I just talk a little bit about the amd64 register conventions.
-Registers
-rax: 8 bytes register. regis"/>
+        <meta name="description" content="Assembly SyntaxThere are 2 types of styles of assembly code: Intel and AT&amp;amp;T. The main difference is: In Intel syntax the first operand is the dest"/>
     
     
     <!--Keywords-->
@@ -33,9 +31,7 @@ rax: 8 bytes register. regis"/>
 
     <!--Open Graph Description-->
     
-        <meta property="og:description" content="amd64 is a superset of x86 instruction set. Here I just talk a little bit about the amd64 register conventions.
-Registers
-rax: 8 bytes register. regis"/>
+        <meta property="og:description" content="Assembly SyntaxThere are 2 types of styles of assembly code: Intel and AT&amp;amp;T. The main difference is: In Intel syntax the first operand is the dest"/>
     
 
     <!--Open Graph Site Name-->
@@ -237,8 +233,29 @@ rax: 8 bytes register. regis"/>
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 -->
             <div class="mx-auto col-md-10 col-md-offset-1">
-                <p>amd64 is a superset of x86 instruction set. Here I just talk a little bit about the amd64 register conventions.</p>
-<h2 id="Registers"><a href="#Registers" class="headerlink" title="Registers"></a>Registers</h2><ul>
+                <h2 id="Assembly-Syntax"><a href="#Assembly-Syntax" class="headerlink" title="Assembly Syntax"></a>Assembly Syntax</h2><p>There are 2 types of styles of assembly code: Intel and AT&amp;T. The main difference is: In Intel syntax the first operand is the destination, and the second operand is the source whereas in AT&amp;T syntax the first operand is the source and the second operand is the destination. Here is a brief example of Intel and AT&amp;T syntax:</p>
+<table>
+<thead>
+<tr>
+<th align="center">Intex Syntax</th>
+<th align="center">AT&amp;T</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">mov     eax,1</td>
+<td align="center">movl    $1,%eax</td>
+</tr>
+<tr>
+<td align="center">mov     ebx,0ffh</td>
+<td align="center">movl    $0xff,%ebx</td>
+</tr>
+<tr>
+<td align="center">int     80h</td>
+<td align="center">int     $0x80</td>
+</tr>
+</tbody></table>
+<p>Please refer the <a target="_blank" rel="noopener" href="https://imada.sdu.dk/u/kslarsen/dm546/Material/IntelnATT.htm">reference</a> to dive deeper. This article will be based on Intel syntax.</p>
+<h2 id="Some-Registers"><a href="#Some-Registers" class="headerlink" title="Some Registers"></a>Some Registers</h2><ul>
 <li>rax: 8 bytes register. registers starts with letter “r” occupy 8 bytes</li>
 <li>eax: 4 bytes register. The lowest 4 bytes of eax register</li>
 <li>ax: 2 bytes register. The lowest 2 bytes of eax register</li>
@@ -246,18 +263,83 @@ rax: 8 bytes register. regis"/>
 <li>al: 1 byte register. The lowest byte of ax register</li>
 </ul>
 <h2 id="Special-Registers"><a href="#Special-Registers" class="headerlink" title="Special Registers"></a>Special Registers</h2><ul>
-<li>RIP: Program counter (PC) register. In contains 2 parts: segment address and offset. The segment address stores the segment of executing program and the offset is the offset of next instruction.</li>
-<li>RSP: The offset address of current top stack frame (when function is called).</li>
-<li>RBP: The bottom address of current bottom stack frame (when function is called).</li>
-<li>RAX: General purpose register. For storing the return value of function call.</li>
+<li>rip: Program counter (PC) register. In contains 2 parts: segment address and offset. The segment address stores the segment of executing program and the offset is the offset of next instruction.</li>
+<li>rsp: The offset address of current top stack frame (when function is called).</li>
+<li>rbp: The bottom address of current bottom stack frame (when function is called).</li>
+<li>rax: General purpose register. For storing the return value of function call.</li>
 </ul>
+<h2 id="General-Purpose-Registers"><a href="#General-Purpose-Registers" class="headerlink" title="General Purpose Registers"></a>General Purpose Registers</h2><h3 id="16-Bits-General-Purpose-Registers"><a href="#16-Bits-General-Purpose-Registers" class="headerlink" title="16 Bits General Purpose Registers"></a>16 Bits General Purpose Registers</h3><p>In 16 bits general purpose registers, the higher&#x2F;lower 8 bits of ax, bx, cx, dx registers can be used by other registers. For example, the higher 8 bits register is represented by letter h, and lower 8 bits register is represented by letter l. For example:</p>
+<ul>
+<li>ax: ah, al</li>
+<li>bd: bh, bl</li>
+<li>cx: ch, cl</li>
+<li>dx: dh, dl</li>
+</ul>
+<h3 id="32-Bits-General-Purpose-Registers"><a href="#32-Bits-General-Purpose-Registers" class="headerlink" title="32 Bits General Purpose Registers"></a>32 Bits General Purpose Registers</h3><p>Extend 16 bits general purpose registers to get 32 bits general purpose registers.</p>
+<ul>
+<li>eax</li>
+<li>ebx</li>
+<li>ecx</li>
+<li>edx</li>
+<li>esi</li>
+<li>edi</li>
+<li>esp</li>
+<li>ebp</li>
+</ul>
+<h3 id="64-Bits-General-Purpose-Registers"><a href="#64-Bits-General-Purpose-Registers" class="headerlink" title="64 Bits General Purpose Registers"></a>64 Bits General Purpose Registers</h3><p>Extend 32 bits general purpose registers to get 64 bits general purpose registers.</p>
+<ul>
+<li>rax</li>
+<li>rbx</li>
+<li>rcx</li>
+<li>rdx</li>
+<li>rsi</li>
+<li>rdi</li>
+<li>rsp</li>
+<li>rbp</li>
+</ul>
+<p>Besides, there are 8 extra registers:</p>
+<ul>
+<li>r8</li>
+<li>r9</li>
+<li>r10</li>
+<li>r11</li>
+<li>r12</li>
+<li>r13</li>
+<li>r14</li>
+<li>r15</li>
+</ul>
+<p>The registers shared with same name (without prefix r, e) are not different registers. They are actually the same register.Take rax as an example:</p>
+<p><img src="/PWN/Assembly/rax.jpg" alt="rax"></p>
+<p>Correspondingly, the extra 8 registers of 64 bits share the same naming convention.</p>
+<p><img src="/PWN/Assembly/extra.png" alt="Extra Registers"></p>
+<h2 id="Segment-Registers"><a href="#Segment-Registers" class="headerlink" title="Segment Registers"></a>Segment Registers</h2><p>Each segment register (cs, ds, ss, ed, fs, gs) preserves a 16 bits segment selector, to mark different segments of program (Please recap about <a href="/PWN/SegmentsandSections/index.html">segments and sections</a>).</p>
+<ul>
+<li>cs: text segment</li>
+<li>ss: stack segment</li>
+<li>ds, es, fs, gs: data segment</li>
+</ul>
+<h2 id="FLAGS-Registers"><a href="#FLAGS-Registers" class="headerlink" title="FLAGS Registers"></a>FLAGS Registers</h2><p>The FLAGS register is the status register that contains the current state of an x86 CPU. In 32 bits mode, FLAGS registers are called EFLAGS, in 64 bits mode, they are called RFLAGS. The upper 32 bits of RFLAGS are preserved bits (not exactly all 0s but with fixed bits) and lower 32 bits are identical with EFLAGS.</p>
+<h2 id="Instruction-Pointer-Registers"><a href="#Instruction-Pointer-Registers" class="headerlink" title="Instruction Pointer Registers"></a>Instruction Pointer Registers</h2><p>Instruction pointer registers work like PC (Program Counter). They stores the address of next instruction to be executed by CPU. They are generally be referred as ip, eip, rip (16 bits&#x2F;32 bits&#x2F;64 bits).</p>
 <h2 id="Program-Execution"><a href="#Program-Execution" class="headerlink" title="Program Execution"></a>Program Execution</h2><h3 id="Static-Linkage"><a href="#Static-Linkage" class="headerlink" title="Static Linkage"></a>Static Linkage</h3><p><img src="/PWN/Assembly/static.png" alt="Static Linkage"></p>
 <h3 id="Dynamic-Linkage"><a href="#Dynamic-Linkage" class="headerlink" title="Dynamic Linkage"></a>Dynamic Linkage</h3><p><img src="/PWN/Assembly/dynamic.png" alt="Dynamic Linkage"></p>
 <p>ld.so: load the address of dynamic linked libraries</p>
-<h2 id="Common-amd64-Instructions"><a href="#Common-amd64-Instructions" class="headerlink" title="Common amd64 Instructions"></a>Common amd64 Instructions</h2><ul>
-<li>mov</li>
-<li>add&#x2F;sub</li>
-</ul>
+<h2 id="Common-amd64-Instructions"><a href="#Common-amd64-Instructions" class="headerlink" title="Common amd64 Instructions"></a>Common amd64 Instructions</h2><h3 id="MOV"><a href="#MOV" class="headerlink" title="MOV"></a>MOV</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MOV RAX, RCX</span><br></pre></td></tr></table></figure>
+
+<p>move the value stored in source operand (<code>rcs</code>) to destination operand (<code>rax</code>). If the instruction is <code>mv rax, eax</code>, the upper 32 bits will be all 0s after the assignment, even if the source operand is an immediate number.</p>
+<p>Only first 4 registers (a, b, c, d)’s byte registers’ value can be assigned interchangeably. Assume the value in <code>rax</code> is 0xFFFFFFFFFFFFFFFF (64 bits all 1s), and the value in <code>rbx</code> is 0xFFFFFFFFFFFFFF01. Then execute the following instruction:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MOV AH, BL</span><br></pre></td></tr></table></figure>
+
+<p>Then value is <code>rax</code> will be 0xFFFFFFFFFFFF01FF. Note: this operation will not clear the rest bits to 0.</p>
+<p>And the instruction like follow is illegal:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MOV AH, BPL</span><br></pre></td></tr></table></figure>
+
+<p>Because <code>rbp</code> is not first 4 registers.</p>
+<p>When source operand is embrace by square brackets, it means the load the value stored in the address whose value is the value stored in source operand and load it to the destination register. For example, let’s assume that the value of <code>rcx</code> is 0x00000291C49F0000 and the value in address 0x00000291C49F0000 is 0xFFFFFFFFFFFFFFFF.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MOV EAX, [RCX] // Or MOVE EAX, DWORD PTR DS:[RCX]</span><br></pre></td></tr></table></figure>
+
+<p>After executing the above instruction, th value of <code>rax</code> should be 0x00000000FFFFFFFF. Note: If you want to assign a register with value directly from an address, this register must be <code>rax</code>. No other registers can do that.</p>
+<p>QWORD: 8 bytes, for registers starts with <code>r</code>, e.g. <code>rax</code>.<br>DWORD: 4 bytes, for registers starts with <code>e</code>, e.g. <code>eax</code>.<br>WORD: 2 bytes, for registers starts without prefix and ends with <code>x</code>, e.g. <code>ax</code>.<br>BYTE: 1 byte, for registers ends with <code>l</code> or <code>h</code>, e.g. <code>ah</code>.</p>
+<p>DS: data segment</p>
 
             </div>
 
@@ -277,7 +359,7 @@ rax: 8 bytes register. regis"/>
                 
                     
 
-<a href="/categories/PWN/" class="text-decoration-none text-secondary">PWN</a>/ <a href="/categories/PWN/prerequisites/" class="text-decoration-none text-secondary">prerequisites</a>
+<a href="/categories/PWN/" class="text-decoration-none text-secondary">PWN</a>/ <a href="/categories/PWN/theory/" class="text-decoration-none text-secondary">theory</a>
 
                 
             </div>

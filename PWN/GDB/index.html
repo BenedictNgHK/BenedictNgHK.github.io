@@ -1,0 +1,87 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>GDB Debugger | Benedict's Blog</title><link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="/css/highlights/dracula.css"><link rel="canonical" href="https://benedictnghk.github.io/PWN/GDB/"/>
+<meta name="description" content="CompilingAdd -g option to gcc to preserve debugging info. 1gcc -o target target.c -g  Using file command to check if the elf file contains…">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GDB Debugger">
+<meta property="og:url" content="https://benedictnghk.github.io/PWN/GDB/">
+<meta property="og:site_name" content="Benedict&#39;s Blog">
+<meta property="og:description" content="CompilingAdd -g option to gcc to preserve debugging info. 1gcc -o target target.c -g  Using file command to check if the elf file contains…">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://benedictnghk.github.io/images/default.jpg">
+<meta property="article:published_time" content="2024-09-01T08:05:48.359Z">
+<meta property="article:modified_time" content="2024-09-01T12:08:47.139Z">
+<meta property="article:author" content="Benedict Ng">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://benedictnghk.github.io/images/default.jpg"><meta property="article:author" content="Benedict Ng"><meta property="twitter:label1" content="Published at"><meta property="twitter:data1" content="2024-09-01 16:05:48"><meta property="twitter:label2" content="Written by"><meta property="twitter:data2" content="Benedict Ng"><link rel="alternate" href="/atom.xml" type="application/atom+xml" title="Benedict's Blog"><script>(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'G-3WGY09S1RR', 'auto');
+ga('send', 'pageview');</script><meta name="generator" content="Hexo 7.3.0"></head><body itemscope itemtype="https://schema.org/WebPage"><nav class="menu" id="menu"><div class="menu-inner"><div class="menu__left-area"><div class="menu__item"><a class="menu__item__link menu__item__link--brand" href="/" title="Home" rel="home"><img class="menu__item__link--brand__image" alt="Benedict's Blog"><span class="menu__item__link--brand__label">Benedict's Blog</span></a></div></div><div class="menu__right-area"><div class="menu__item"><a class="menu__item__link" href="/">Posts</a></div><div class="menu__item"><a class="menu__item__link" href="/index/index.html">Index</a></div><div class="menu__item"><a class="menu__item__link" href="/categories/Uncategorized/">Categories</a></div><div class="menu__item"><a class="menu__item__link" href="/categories/Hexo/">Hexo</a></div><div class="menu__item"><a class="menu__item__link" href="/categories/LeetCode/">LeetCode</a></div><div class="menu__item"><a class="menu__item__link" href="/categories/PWN/">PWN</a></div><div class="menu__item"><a class="menu__item__link" href="/categories/OS/">OS</a></div><div class="menu__item"><a class="menu__item__link" target="_blank" rel="noopener" href="https://github.com/BenedictNgHK">Github</a></div></div></div></nav><div class="page-background"></div><div class="content-container"><div class="content-outer"><div class="content-inner" itemscope itemtype="https://schema.org/Blog"><article class="article" id="article" itemscope itemtype="https://schema.org/BlogPosting"><h1 class="article__title" itemprop="headline">GDB Debugger</h1><div class="article__meta"><time class="article__meta__time" datetime="2024-09-01T08:05:48.359Z" itemprop="datePublished">2024-09-01 16:05:48</time><div class="article__meta__categories"><a class="article__meta__categories__item" href="/categories/PWN/">PWN</a><span class="article__meta__categories__separator">></span><a class="article__meta__categories__item" href="/categories/PWN/Tools/">Tools</a></div></div><hr><div class="article__contents"><h2 id="Compiling"><a href="#Compiling" class="headerlink" title="Compiling"></a>Compiling</h2><p>Add <code>-g</code> option to gcc to preserve debugging info.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -o target target.c -g</span><br></pre></td></tr></table></figure>
+
+<p>Using <code>file</code> command to check if the elf file contains debugging information.</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pipe: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, </span><br><span class="line">interpreter /lib64/ld-linux-x86-64.so.2, </span><br><span class="line">BuildID[sha1]=d46958bf74a98420d595d3318c5417fb3d14c260, </span><br><span class="line">for GNU/Linux 3.2.0, with debug_info, not stripped</span><br></pre></td></tr></table></figure>
+
+<p>The last line indicates that this elf file is with debugging information. You can remove it with <code>strip</code> command.</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pipe: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, </span><br><span class="line">interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=d46958bf74a98420d595d3318c5417fb3d14c260, </span><br><span class="line">for GNU/Linux 3.2.0, stripped</span><br></pre></td></tr></table></figure>
+
+<h2 id="Basic-Commands"><a href="#Basic-Commands" class="headerlink" title="Basic Commands"></a>Basic Commands</h2><p>Debugging a elf file: <code>gdb filename</code>.</p>
+<table>
+<thead>
+<tr>
+<th align="center">Command</th>
+<th align="center">abbr.</th>
+<th align="left">Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">set args</td>
+<td align="center"></td>
+<td align="left">set command line arguments. For example: <code> gdb filename</code> to enter gdb interface. And <code>set args a1 a2</code> to pass arguments to gdb.</td>
+</tr>
+<tr>
+<td align="center">break <code>line</code></td>
+<td align="center">b</td>
+<td align="left">set breakpoint. <code>b 20</code> means set a break point at line 20. You can set multiple breakpoints.</td>
+</tr>
+<tr>
+<td align="center">run</td>
+<td align="center">r</td>
+<td align="left">run the program till the next break point.</td>
+</tr>
+<tr>
+<td align="center">next</td>
+<td align="center">n</td>
+<td align="left">execute the next statement. If this statement is a function call, <code>next</code> command will not go into the function call. It will execute the function call and stop at the next line of the function call.</td>
+</tr>
+<tr>
+<td align="center">step</td>
+<td align="center">s</td>
+<td align="left">Go into the function call if you the source code of the function is compiled to the program, otherwise if it is loaded as library, it will not go into the function.</td>
+</tr>
+<tr>
+<td align="center">print <code>var</code></td>
+<td align="center">p</td>
+<td align="left">print the value in variable <code>var</code>. This command can entail with <code>strcpy</code>. For example, a char array named <code>Hello</code> with length 20. You can execute command <code>p strcpy(Hello,&quot;Hello World&quot;)</code> then <code>p Hello</code>. For <code>p Hello</code>, the value of <code>Hello</code>, that is <strong>Hello World</strong> will be printed.</td>
+</tr>
+<tr>
+<td align="center">continue</td>
+<td align="center">c</td>
+<td align="left">continue executing till the next breakpoint.</td>
+</tr>
+<tr>
+<td align="center">set var <code>var</code>&#x3D;<code>value</code></td>
+<td align="center"></td>
+<td align="left">set variable <code>var</code> of value <code>value</code>.</td>
+</tr>
+<tr>
+<td align="center">quit</td>
+<td align="center">q</td>
+<td align="left">quit gdb environment.</td>
+</tr>
+</tbody></table>
+</div><div class="article__author" itemscope itemprop="author" itemtype="https://schema.org/Person"><img class="article__author__image" src="https://www.gravatar.com/avatar/d41d8cd98f00b204e9800998ecf8427e" alt="Benedict Ng"><a class="article__author__link" title="About Benedict Ng" rel="author">Benedict Ng</a><p class="article__author__desc"></p><div class="article__author__socials"><a class="article__author__socials__item" href="https://github.com/BenedictNgHK" title="github" target="_blank"><i class="fa fa-github"></i></a><a class="article__author__socials__item" href="/atom.xml" title="rss" target="_blank"><i class="fa fa-rss"></i></a></div><meta itemprop="name" content="Benedict Ng"></div><div class="sharer" id="sharer"><div class="sharer-inner"><div class="sharer__right"><button class="sharer__item" id="sharer-facebook"><i class="fa fa-facebook-official"></i></button><button class="sharer__item" id="sharer-twitter"><i class="fa fa-twitter"></i></button><button class="sharer__item" id="sharer-pinterest"><i class="fa fa-pinterest"></i></button><button class="sharer__item" id="sharer-pocket"><i class="fa fa-get-pocket"></i></button></div></div></div><!-- Disqus Code--><!-- Meta Tags for Structured Data--><meta itemprop="dateModified" content="2024-09-01T12:08:47.139Z"><meta itemprop="articleBody" content="CompilingAdd -g option to gcc to preserve debugging info.
+1gcc -o target target.c -g
+
+Using file command to check if the elf file contains debugging information.
+1234pipe: ELF 64-bit LSB pie..."><meta itemprop="url" content="https://benedictnghk.github.io/PWN/GDB/"><meta itemprop="mainEntityOfPage" content="https://benedictnghk.github.io/PWN/GDB/"><div itemscope itemtype="https://schema.org/Organization" itemprop="publisher"><meta itemprop="name" content="Benedict's Blog"><div itemscope itemprop="logo" itemtype="https://schema.org/ImageObject"><meta itemprop="url" content="https://benedictnghk.github.ioundefined"></div></div><div itemscope itemtype="https://schema.org/ImageObject" itemprop="image"><meta itemprop="contentUrl" content="https://benedictnghk.github.io/images/default.jpg"><meta itemprop="url" content="https://benedictnghk.github.io/images/default.jpg"><meta itemprop="width" content="1280"><meta itemprop="height" content="720"></div></article><section class="related-posts"><h3>Related posts</h3><div class="related-posts__item__wrapper"><a class="related-posts__item" href="/PWN/Assembly/"><div class="related-posts__item__background" style="background-image:url('/PWN/Assembly/rax.jpg');"></div><div class="related-posts__item__overlay"></div><span class="related-posts__item__title">Assembly</span></a></div><div class="related-posts__item__wrapper"><a class="related-posts__item" href="/PWN/Endianness/"><div class="related-posts__item__background" style="background-image:url('/PWN/Endianness/Endianess.png');"></div><div class="related-posts__item__overlay"></div><span class="related-posts__item__title">Endianness</span></a></div><div class="related-posts__item__wrapper"><a class="related-posts__item" href="/PWN/SegmentsandSections/"><div class="related-posts__item__background" style="background-image:url('/PWN/SegmentsandSections/memoryLayoutC.jpg');"></div><div class="related-posts__item__overlay"></div><span class="related-posts__item__title">Segments and Sections</span></a></div></section></div></div></div><footer id="footer"><div class="widgets"><div class="widgets-inner"><!-- Jade doesn't support dynamic inclusion with `each`.--><!-- So, I just hard coded the file names that will be included.--><div class="widgets__item"><h3 class="widgets__item__heading">Recent posts</h3><ul class="recent-posts"><li class="recent-posts__item"><a href="/PWN/GDB/">GDB Debugger</a></li><li class="recent-posts__item"><a href="/OS/Pipe/">Pipe System Call</a></li><li class="recent-posts__item"><a href="/PWN/Shellcode/">Shellcode</a></li><li class="recent-posts__item"><a href="/PWN/Assembly/">Assembly</a></li><li class="recent-posts__item"><a href="/PWN/Endianness/">Endianness</a></li></ul></div><div class="widgets__item"><h3 class="widgets__item__heading">Categories</h3><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/LeetCode/">LeetCode</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PWN/">PWN</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/PWN/Tools/">Tools</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PWN/theory/">theory</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Uncategorized/">Uncategorized</a><span class="category-list-count">1</span></li></ul></div></div></div><p class="copyright"><small>© 2024 Benedict Ng<br>Powered by <a href="https://hexo.io" rel="external" target="_blank">Hexo</a>, Theme by <a href="https://github.com/hyunseob" rel="external" target="_blank">HyunSeob</a></small></p></footer><!--[if lt IE 10]><script src="/js/classList.min.js"></script><![endif]--><script src="/js/index.min.js"></script></body></html>
